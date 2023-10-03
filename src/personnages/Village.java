@@ -30,8 +30,11 @@ public class Village {
 		return villageois[numeroHabitant]; 
 	}
 	
-	public void  afficherVillageois() {
-		System.out.println();
+	public void afficherVillageois() {
+		System.out.println("Dans le village du grand " + chef.getNom() + " vivent les légendaires Gaulois : " );
+		for(int i = 0; i < nbVillageois; i++) {
+			System.out.println(villageois[i].getNom());
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -40,14 +43,22 @@ public class Village {
 //		Gaulois gaulois = village.trouverHabitant(30);
 //			On depasse ici la longueur du tableau
 		
-		Chef abraracourcix = new Chef("Abraracourcis", 8, village);
-		
-		
 //		Gaulois gaulois = village.trouverHabitant(1);
 //		System.out.println(gaulois);
 //			Gaulois ne se trouve pas dans la liste des habitants 
 		
-		System.out.println(village.chef);
+		Chef abra = new Chef("Abraracourcix", 6, village); 
+		village.setChef(abra);
+		
+		Gaulois gaulois = new Gaulois("Asterix", 6);
+		village.ajouterHabitant(gaulois); 
+		
+		Gaulois obelix = new Gaulois("Obélix", 25); 
+		village.ajouterHabitant(obelix);
+		
+		
+		village.afficherVillageois(); 
+		
 		
 	}
 }
