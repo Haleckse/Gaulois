@@ -6,7 +6,8 @@ public class Romain {
 	private String nom; 
 	private int force;
 	private Equipement[] equipements; 
-	private int nbEquipement = 0 ;   
+	private int nbEquipement = 0 ;  
+	private String texte; 
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -31,18 +32,46 @@ public class Romain {
 		return "Le romain " +nom + ": ";
 	}
 	
-	public void recevoirCoup(int forceCoup) {
-		assert(force >= 0) : "La force d'un romain est toujours positive"; 
-		int forceAvantCoup = force; 
+//	public void recevoirCoup(int forceCoup) {
+//		assert(force >= 0) : "La force d'un romain est toujours positive"; 
+//		int forceAvantCoup = force; 
+//		force -= forceCoup;
+//		if (force > 0 ) {
+//			parler("Aie");
+//		}
+//		else {
+//			parler("J'abandonne");
+//		}
+//		assert(forceAvantCoup > force) : "La force du romain doit diminuer"; 
+//	}
+	
+	public Equipement[] recevoirCoup(int forceCoup) {
+		Equipement[] equipementEjecte = null;
+		// précondition
+		assert force > 0;
+		int oldForce = force;
+		forceCoup = CalculResistanceEquipement(forceCoup);
 		force -= forceCoup;
-		if (force > 0 ) {
-			parler("Aie");
-		}
-		else {
-			parler("J'abandonne");
-		}
-		assert(forceAvantCoup > force) : "La force du romain doit diminuer"; 
-	}
+		// if (force > 0) {
+		// parler("Aïe");
+		// } else {
+		// equipementEjecte = ejecterEquipement();
+		// parler("J'abandonne...");
+		// }
+		switch (force) {
+		case 0:
+		parler("Aïe");
+		if (equipements[i] == null) {
+			continue;
+			} else {
+			equipementEjecte[nbEquipementEjecte] =
+			equipements[i];
+			nbEquipementEjecte++;
+			equipements[i] = null;
+			}
+			}
+			return equipementEjecte;
+			}
 	
 	public void sEquiper(Equipement equipement) {
 		switch(nbEquipement) {
